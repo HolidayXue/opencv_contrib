@@ -512,6 +512,11 @@ namespace cv
 										for (int cd = -1; cd < 2; cd++){
 											if (rd != 0 || cd != 0){
 												Vec2i branch_point = Vec2i(trunk_point[0] + rd, trunk_point[1] + cd);
+												//test
+												if (branch_point[0]<0 || branch_point[1]<0 || branch_point[0]>edgeImage.rows-1 || branch_point[1]>edgeImage.cols-1)
+						                                                {
+						                                                    continue;
+						                                                }//bug,fix out of image
 												if (isProcessed.at<bool>(branch_point[0], branch_point[1]) == false){
 													double branch_orientation = orientationImage.at<double>(branch_point[0], branch_point[1]);
 													double branch_magnitude = edgeImage.at<double>(branch_point[0], branch_point[1]);
